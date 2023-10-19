@@ -91,8 +91,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-
-  # Fixture
-  config.include FactoryBot::Syntax::Methods
-
 end
