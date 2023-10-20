@@ -52,6 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.9"
+gem "jwt"
 
 # GraphQL
 gem 'graphql'
@@ -73,12 +74,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "graphiql-rails"
 end
 
 group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
-
-
-
-gem "graphiql-rails", group: :development
