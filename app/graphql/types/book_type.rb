@@ -3,12 +3,12 @@
 module Types
   class BookType < Types::BaseObject
     field :id, ID, null: false
-    field :title, Types::StringType
-    field :year_published, Types::IntegerType
+    field :title, String
+    field :year_published, Integer
     field :authors, String
     field :description, String
-    field :genre, Types::StringType
-    field :user, Types::ReferencesType
+    field :genre, String
+    field :user, UserType
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

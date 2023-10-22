@@ -1,0 +1,17 @@
+module QueryTypes
+  BooksType = GraphQL::ObjectType.define do
+    name 'BookQueryType'
+    description 'Returns the list of books'
+
+    field :books, [Types::BookType], null: false do
+      argument :page, Int, required: false, default_value: 1
+      argument :per_page, Int, required: false, default_value: 10
+    end
+
+    def books(page:, per_page:)
+      #Book.page(page).per(per_page)
+      Book.all
+
+    end
+  end
+end
