@@ -20,12 +20,26 @@ module Types
 
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
+    field :success, Boolean
+    field :errors, [String]
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :books, [Types::BookType], null: false do
+      argument :page, Integer, required: false, default_value: 1
+      argument :per_page, Integer, required: false, default_value: 10
+    end
+
+    def books(page:, per_page:)
+      Book.paginate(page: page, per_page: per_page)
+    end
+
+    field :book, Types::BookType, null: false do
+      argument :id, Integer, required: true
+    end
+
+    def book(id:)
+      Book.find(id)
+      rescue ActiveRecord::RecordNotFound => error
+        raise GraphQL::ExecutionError, error.message
     end
   end
 end
